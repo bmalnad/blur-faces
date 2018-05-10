@@ -61,7 +61,7 @@ module.exports.blurfaces = (event, context, callback) => {
             body: JSON.stringify({
               blurAdults: inputs.blurAdults,
               pixelationSize: Math.floor(pixelationSize * 100) + '% of face height',
-              facedata: faces,
+              faceData: faces,
               image: img,
             }),
           };
