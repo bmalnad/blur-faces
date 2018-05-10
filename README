@@ -1,0 +1,30 @@
+# blur-faces
+
+This function pixelates faces in uploaded images.  It accepts and returns a JSON object containing a base64 encoded image. 
+
+It will work with any JPEG, PNG, or GIF image. 
+
+The GitHub repo (<https://github.com/bmalnad/blur-faces>) contains a 'demo.html' file that shows a very simple demo of how to 
+use the function. You will need to modify lines 6 of the source to use the URL for your new AWS API. 
+
+`const aws_api_endpoint = "https://your-aws-api-url-goes-here";`
+
+####Usage:
+
+* Send an HTTP POST to your new API URL
+* The body of your post needs to be a JSON object 
+
+
+####Request (JSON Object):
+
+- image: base64 data uri  *REQUIRED*
+- blurAdults: defaults is true, set to false to only blur kids  *OPTIONAL*
+- pixelationSize: default is 0.07 (7% of face height)  *OPTIONAL*
+
+
+####Response (JSON Object):
+
+- image: base64 data uri of new image with faces blurred
+- blurAdults: true/false 
+- pixelationSize: 0.07 or your custom value 
+- faceData: All face data returned by AWS Rekognition API for original image 
