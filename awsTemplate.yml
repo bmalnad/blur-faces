@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Blur faces in images using Rekognition. Accepts and returns a JSON object with your base64 encoded image. 
+Resources:
+  blur-faces:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.blurfaces
+      Runtime: nodejs6.10
+      CodeUri: s3://blur-faces-demo/blura-faces.zip
+      Description: >-
+        Blur faces in images using Rekognition. Accepts and returns a JSON object with your base64 encoded image. 
+      MemorySize: 128
+      Timeout: 6
+      Events:
+        blur-faces-api:
+          Type: Api
+          Properties:
+            Path: /blurfaces
+            Method: POST

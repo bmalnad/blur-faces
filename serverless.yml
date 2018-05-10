@@ -1,0 +1,24 @@
+service: blur-faces
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "rekognition:*"
+      Resource: "*"
+
+functions:
+  blurfaces:
+    handler: handler.blurfaces
+    events:
+     - http:
+        path: blurfaces
+        method: POST
+        cors: true
+plugins:
+  - serverless-offline
